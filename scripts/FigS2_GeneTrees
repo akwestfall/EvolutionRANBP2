@@ -50,3 +50,15 @@ p + aes(color=Species) +
   geom_strip('Gekko japonicus', 'Myxine glutinosa', ### weird start to adjust clipping
              color = plasma(6)[2],
              label="Agnatha", offset = -0.5, offset.text = 0, barsize = 0, fontsize = 3) 
+
+# CTD tree
+tree <- read.raxml("RAxML_bipartitionsBranchLabels.CTD_FINAL")
+
+# remove species that were not real CTD sequences
+new.tree <- drop.tip.phylo(tree@phylo, "Strongylocentrotus_purpuratus") %>%
+  drop.tip.phylo(., "Branchiostoma_belcheri") %>%
+  drop.tip.phylo(., "Branchiostoma_floridae")
+ggtree(new.tree) + geom_tiplab(size = 2, angle = 90) + coord_flip() + geom_treescale()
+
+### tree was rerooted in R just for visualization purposes and then colored manually in
+### illustrator by clade for final publication to match the gene tree
