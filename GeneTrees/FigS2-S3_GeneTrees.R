@@ -50,6 +50,7 @@ p + aes(color=Species) +
   geom_strip('Gekko japonicus', 'Myxine glutinosa', ### weird start to adjust clipping
              color = plasma(6)[2],
              label="Agnatha", offset = -0.5, offset.text = 0, barsize = 0, fontsize = 3) 
+### scalebar was moved in adobe illustrator
 
 # CTD tree
 tree <- read.raxml("RAxML_bipartitionsBranchLabels.CTD_FINAL")
